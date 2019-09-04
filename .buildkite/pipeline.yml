@@ -1,6 +1,15 @@
 ---
 steps:
   - name: "Build & Push :docker:"
+    branches: "!master"
     command: /etc/buildkite-agent/buildkite-scripts/multistage-docker-build.sh
+    agents:
+      type: aws-buildkite-agent
+
+  - name: "Build & Push latest :docker:"
+    branches: master
+    command: /etc/buildkite-agent/buildkite-scripts/multistage-docker-build.sh
+    env:
+      CUSTOM_IMAGE_TAG: latest
     agents:
       type: aws-buildkite-agent
