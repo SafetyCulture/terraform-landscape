@@ -1,0 +1,6 @@
+---
+steps:
+  - name: "Build & Push :docker:"
+    command: /etc/buildkite-agent/buildkite-scripts/multistage-docker-build.sh
+    agents:
+      type: aws-buildkite-agent
